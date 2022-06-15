@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
+    "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -44,8 +45,8 @@
   },
   "lint-staged": {
     "src/**/*.{js,vue}": [
-      "npm run lint",
-      "git commit"
+      "eslint --fix",
+      "git add"
     ]
   },
   "husky": {
