@@ -1,8 +1,14 @@
 /* 定义全局变量 */
 :root {
+  /* 主题色 */
   --primary-color: #386BF5;
+  /* 标题色 */
   --head-color: #333333;
+  /* 辅色 */
   --minor-color: #999999;
+  /* 文字深色 */
+  --dark-text-color: #1B1B1B;
+  ;
 }
 
 html {
@@ -27,4 +33,58 @@ label {
 
 #app {
   height: 100%;
+}
+
+/* 弹窗样式 */
+.popper {
+  width: auto !important;
+  margin-top: 0 !important;
+  padding: 0;
+  background: transparent;
+  border: none;
+  left: 160px !important;
+  .popper-content {
+    display: flex;
+    .left {
+      width: 260px;;
+      height: 615px;
+      background: rgba(51, 51, 51, 0.5);
+      display: flex;
+      flex-direction: column;
+      .item {
+        height: 74px;
+        line-height: 74px;
+        padding-left: 42px;
+        font-size: 19px;
+        cursor: pointer;
+        &:hover {
+          background: var(--primary-color);
+        }
+      }
+    }
+    .right {
+      width: 1000px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 0 100px 0 30px;
+      .sub-item {
+        display: flex;
+        height: 95px;
+        line-height: 95px;
+        .sub-left {
+          width: 180px;
+        }
+        .sub-right {
+          width: 700px;
+          border-bottom: 1px dashed #CCCCCC;
+          display: flex;
+          padding-left: 30px;
+          .sub-content {
+            width: 50px;
+          }
+        }
+      }
+    }
+  }
 }

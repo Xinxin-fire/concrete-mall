@@ -6,16 +6,16 @@
     </el-tabs>
     <el-form ref="loginForm" :model="loginForm" :rules="rules" class="form">
       <el-form-item class="form-item form-input" prop="title">
-        <el-input v-model="loginForm.telephone" placeholder="请输入您的手机号" type="input" />
+        <el-input v-model="loginForm.telephone" placeholder="请输入您的手机号" />
       </el-form-item>
       <el-form-item class="form-item form-input" prop="title">
-        <el-input v-model="loginForm.password" placeholder="请输登录密码" type="input" />
+        <el-input v-model="loginForm.password" placeholder="请输登录密码" />
       </el-form-item>
       <el-form-item class="agree" prop="title">
         <el-checkbox v-model="isAgree">已阅读并同意 《服务条款》《法律声明》《隐私政策》</el-checkbox>
       </el-form-item>
     </el-form>
-    <el-button type="primary" class="login-button">登录</el-button>
+    <el-button type="primary" class="login-button" @click="toHome">登录</el-button>
     <div class="bottom">
       <span class="left">忘记密码?</span>
       <span class="right">立即注册</span>
@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import { A } from '@/utils/common';
-console.log(A);
 export default {
   name: 'LoginForm',
   data() {
@@ -41,6 +39,9 @@ export default {
   methods: {
     handleClick(tab, event) {
       console.log(tab, event);
+    },
+    toHome() {
+      this.$router.push('/');
     }
   }
 };

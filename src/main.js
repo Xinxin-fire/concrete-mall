@@ -4,11 +4,15 @@ import router from './router';
 import store from './store';
 
 import '@/utils/componentsUse';
+
 // 屏幕分辨率适配
 import 'amfe-flexible/index.js';
 
 // 全局样式
 import '@/styles/index.scss';
+
+// icon
+import './icons';
 
 Vue.config.productionTip = false;
 new Vue({

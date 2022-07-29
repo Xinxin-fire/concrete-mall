@@ -10,12 +10,7 @@
 import LoginForm from './components/LoginForm';
 export default {
   name: 'LoginView',
-  components: { LoginForm },
-  methods: {
-    getA() {
-      console.log(1);
-    }
-  }
+  components: { LoginForm }
 };
 </script>
 

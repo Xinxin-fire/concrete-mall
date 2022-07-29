@@ -1,0 +1,41 @@
+.goods {
+  margin-top: 40px;
+  .head {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 45px;
+    color: #000;
+    margin-bottom: 30px;
+  }
+  .content {
+    display: flex;
+    height: 856px;
+    justify-content: space-between;
+    .left {
+      width: 304px;
+      border: 1px solid var(--primary-color);
+      .item {
+        height: 74px;
+        line-height: 74px;
+        color: var(--head-color);
+        padding-left: 42px;
+      }
+    }
+    .right {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      .item {
+        margin-left: 20px;
+        cursor: pointer;
+        &:hover {
+          border: 1px solid var(--primary-color);
+        }
+        .goods-image {
+          width: 297px;
+          height: 425px;
+        }
+      }
+    }
+  }
+}

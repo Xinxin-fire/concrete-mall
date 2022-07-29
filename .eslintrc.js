@@ -22,6 +22,7 @@ module.exports = {
         'max': 1
       }
     }],
+    'vue/no-mutating-props': 0,
     'vue/singleline-html-element-content-newline': 'off',
     'vue/multiline-html-element-content-newline': 'off',
     'vue/name-property-casing': ['error', 'PascalCase'],

@@ -1,0 +1,28 @@
+.product-category {
+  .el-popover__reference {
+    display: flex;
+    width: 1920px;
+    .select-button {
+      margin-left: 80px;
+    }
+  }
+  .menu-left {
+    width: 260px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 22px;
+    padding: 0 33px;
+    box-sizing: border-box;
+    margin-left: 160px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    .menu {
+      width: 34px;
+      height: 34px;
+      margin-right: 20px;
+    }
+  }
+}
