@@ -1,0 +1,48 @@
+.evaluate {
+  padding: 26px 160px 0;
+  .content {
+    height: 587px;
+    border: 1px solid #E6E6E6;
+    .el-textarea {
+      width:751px;
+      margin: 54px 0 0 81px;
+      padding: 6px 10px;
+    }
+    ::v-deep .el-textarea__inner {
+      width:751px;
+      height:171px;
+      border: 1px solid #DCDCDC;
+      font-size: 18px;
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+  .bottom {
+    display: flex;
+    margin: 54px 0 0 81px;
+    .title {
+      width: 136px;
+      height: 63px;
+      line-height: 63px;
+      text-align: center;
+      background: rgba(217, 217, 217, 0.4);
+      color: #999999;
+    }
+    .left {
+      margin-left: 87px;
+      .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        .desc {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  .mainButton {
+    margin: 50px 0 0 400px;
+  }
+}
+::v-deep .el-rate .el-rate__item {
+  font-size: 22px !important;
+}

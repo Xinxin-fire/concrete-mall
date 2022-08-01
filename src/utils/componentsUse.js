@@ -170,6 +170,8 @@ Vue.prototype.$message = Message;
 import BaseForm from '@/components/baseForm/BaseForm';
 import BaseTable from '@/components/baseTable/BaseTable';
 import BaseButton from '@/components/baseButton/BaseButton';
+import BaseBack from '@/components/baseBack/BaseBack.vue';
 Vue.component('BaseForm', BaseForm);
 Vue.component('BaseTable', BaseTable);
 Vue.component('BaseButton', BaseButton);
+Vue.component('BaseBack', BaseBack);

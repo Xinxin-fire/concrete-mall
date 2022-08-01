@@ -13,7 +13,7 @@
     justify-content: space-between;
     .left {
       width: 304px;
-      border: 1px solid var(--primary-color);
+      border: 1px solid #386BF5;
       .item {
         height: 74px;
         line-height: 74px;
@@ -28,11 +28,12 @@
       .item {
         margin-left: 20px;
         cursor: pointer;
+        border: 1px solid transparent;
         &:hover {
-          border: 1px solid var(--primary-color);
+          border: 1px solid #386BF5;
         }
         .goods-image {
-          width: 297px;
+          width: 296px;
           height: 425px;
         }
       }

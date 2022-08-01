@@ -15,7 +15,7 @@
         <el-menu-item index="2" route="/personal/personalInfo/contract">我的合同</el-menu-item>
         <el-menu-item index="3" route="/personal/personalInfo/project-info">我的工程</el-menu-item>
         <el-menu-item index="4" route="/personal/personalInfo/bill-info">开票信息</el-menu-item>
-        <el-menu-item index="5" route="/personal/personalInfo/harvest-address">收获地址</el-menu-item>
+        <el-menu-item index="5" route="/personal/personalInfo/harvest-address">收货地址</el-menu-item>
       </el-menu>
     </div>
     <router-view />

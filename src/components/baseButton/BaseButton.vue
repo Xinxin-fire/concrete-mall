@@ -1,8 +1,16 @@
 <template>
   <div class="base-button">
-    <el-button v-if="type === 'saveButton'" type="primary" class="define-button save-button" @click="buttonClick">{{ name }}</el-button>
-    <el-button v-if="type === 'searchButton'" type="primary" class="define-button search-button" @click="buttonClick">{{ name }}</el-button>
-    <el-button v-if="type === 'resetButton'" type="primary" class="define-button reset-button" @click="buttonClick">{{ name }}</el-button>
+    <!-- 主按钮+辅按钮 用于查询重置等 height:43px-->
+    <el-button v-if="type === 'mainButton'" type="primary" class="main-button" @click="click">{{ name }}</el-button>
+    <el-button v-else-if="type === 'minorButton'" type="primary" class="minor-button" @click="click">{{ name }}</el-button>
+    <!-- 确定取消按钮  height: 32px -->
+    <el-button v-else-if="type === 'confirmButton'" type="primary" class="confirm-button" @click="click">{{ name }}</el-button>
+    <el-button v-else-if="type === 'cancelButton'" type="primary" class="cancel-button" @click="click">{{ name }}</el-button>
+    <!-- 对比色按钮 用于表格内点击 height: 36px;-->
+    <el-button v-else-if="type === 'contrastButton'" type="primary" class="contrast-button" @click="click">{{ name }}</el-button>
+    <!-- 文本按钮 用于表格内点击 -->
+    <el-button v-else-if="type === 'textButton'" type="text" class="text-button" @click="click">{{ name }}</el-button>
+    <el-button v-else-if="type === 'minortextButton'" type="text" class="minor-text-button" @click="click">{{ name }}</el-button>
   </div>
 </template>
 
@@ -11,7 +19,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'saveButton'
+      default: 'mainButton'
     },
     name: {
       type: String,
@@ -23,37 +31,13 @@ export default {
     };
   },
   methods: {
-    buttonClick() {
-      this.$emit('buttonClick');
+    click() {
+      this.$emit('click');
     }
   }
 };
 </script>
 
 <style lang='scss' scoped>
-.base-button {
-  display: inline-block;
-}
-.define-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #0075FF;
-}
-.save-button {
-  width: 173px;
-  height: 32px;
-}
-.search-button {
-  width: 80px;
-  height: 42px;
-  border: none;
-}
-.reset-button {
-  width: 80px;
-  height: 42px;
-  background: #E7E7E7;
-  color: rgba(0, 0, 0, 0.9);
-  border: none;
-}
+  @import './baseButton.scss'
 </style>

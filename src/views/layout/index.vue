@@ -4,7 +4,7 @@
     <Search v-if="path.indexOf('/personal') === -1" />
     <ProductCategory v-if="path.indexOf('/personal') === -1" />
     <router-view />
-    <Bottom />
+    <Bottom v-if="isShowBottom" />
   </div>
 </template>
 
@@ -18,18 +18,17 @@ export default {
   components: { Head, Search, ProductCategory, Bottom },
   data() {
     return {
-      path: ''
+      path: '',
+      isShowBottom: true
     };
   },
   mounted() {
     this.path = this.$route.path;
-    console.log(this.$route);
-    console.log(this.path);
   },
   updated() {
+    const nameList = ['evaluate', 'enterPayment', 'takeDelivery'];
+    this.isShowBottom = !nameList.includes(this.$route.name);
     this.path = this.$route.path;
-    console.log(this.$route);
-    console.log(this.path);
   }
 };
 </script>

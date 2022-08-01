@@ -41,7 +41,7 @@
               clearable
               style="width: 400px;"
               :placeholder="formContent[item].placeholder || '请选择'"
-              @change="onSelectChange(item, $event, formContent[item].name)"
+              @change="selectChange(item, $event)"
             >
               <el-option
                 v-for="optionItem in formContent[item].options"
@@ -92,7 +92,14 @@
               filterable
               clearable
             />
-            <span v-if="formContent[item].wordDesc" style="margin-left: 10px">{{ formContent[item].wordDesc }}</span>
+            <span v-if="formContent[item].wordDesc" style="margin-left: 30px" class="word-desc">{{ formContent[item].wordDesc }}</span>
+            <base-button
+              v-if="formContent[item].buttonName"
+              type="textButton"
+              :name="formContent[item].buttonName"
+              style="margin-left: 30px"
+              @click="buttonClick"
+            />
             <template v-if="formContent[item].type === 'custom'">
               <slot :name="formContent[item].customName" :props="form[item]" />
             </template>
@@ -152,11 +159,17 @@ export default {
         }
       });
     },
+    buttonClick() {
+      this.$emit('buttonClick');
+    },
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
     onRadioChange(val) {
       console.log(val);
+    },
+    selectChange(props, val) {
+      this.$emit('selectChange', props, val);
     }
   }
 };

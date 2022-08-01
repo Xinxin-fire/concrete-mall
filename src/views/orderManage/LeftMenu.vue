@@ -12,7 +12,7 @@
         @select="handleSelect"
       >
         <el-menu-item index="1" route="/personal/order-manage/my-order">我的订单</el-menu-item>
-        <el-menu-item index="2" route="/personal/order-manage/my-order">我的运输单</el-menu-item>
+        <el-menu-item index="2" route="/personal/order-manage/my-transport">我的运输单</el-menu-item>
       </el-menu>
     </div>
     <router-view />

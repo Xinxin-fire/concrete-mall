@@ -1,28 +1,28 @@
 <template>
   <div class="project-info">
     <div class="save-data">
-      <div class="title">新增收货地址</div>
+      <div class="title">{{ title }}</div>
       <BaseForm class="form" :form="form" :rules="rules" :form-content="formContent">
         <div slot="person" class="mutilSelect">
-          <el-select v-model="value" placeholder="请选择">
+          <el-select v-model="form.provice" placeholder="请选择">
             <el-option
-              v-for="item in options"
+              v-for="item in proviceList"
               :key="item.value"
               :label="item.label"
               :value="item.value"
             />
           </el-select>
-          <el-select v-model="value" placeholder="请选择">
+          <el-select v-model="form.city" placeholder="请选择">
             <el-option
-              v-for="item in options"
+              v-for="item in cityList"
               :key="item.value"
               :label="item.label"
               :value="item.value"
             />
           </el-select>
-          <el-select v-model="value" placeholder="请选择">
+          <el-select v-model="form.county" placeholder="请选择">
             <el-option
-              v-for="item in options"
+              v-for="item in countyList"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -32,7 +32,9 @@
       </BaseForm>
       <div class="bottom-button">
         <el-checkbox v-model="checked" class="checked">设为默认地址</el-checkbox>
-        <base-button />
+        <div>
+          <base-button class="save-button" />
+        </div>
       </div>
     </div>
     <base-table
@@ -53,37 +55,41 @@ export default {
   components: { BaseButton },
   data() {
     return {
+      title: '新增收货地址',
+      proviceList: [{ label: '陕西省', value: '陕西省' }],
+      cityList: [{ label: '西安市', value: '西安市' }],
+      countyList: [{ label: '蓝天县', value: '蓝天县' }],
       form: { },
       formContent: {
         projectName: { prop: 'projectName', label: '收货人', type: 'input', span: 12 },
         telephone: { prop: 'telephone', label: '联系电话', type: 'input', span: 12 },
-        person: { prop: 'person', label: '所在地区', type: 'custom', customName: 'person', span: 14 },
+        provice: { prop: 'provice', label: '所在地区', type: 'custom', customName: 'person', span: 14 },
         adress: { prop: 'adress', label: '详细地址', type: 'textarea', span: 14, placeholder: '请输入详细地址信息，如街道、门牌号、小区、楼栋号、单元' }
       },
       rules: {
         projectName: { required: true, message: '请输入收货人', trigger: 'change' },
         telephone: { required: true, message: '请输入联系电话', trigger: 'change' },
-        person: { required: true, message: '请输入所在地区', trigger: 'change' },
+        provice: { required: true, message: '请输入所在地区', trigger: 'change' },
         adress: { required: true, message: '请输入详细地址', trigger: 'change' }
       },
       operationList: ['编辑', '删除'],
       tableData: [
         {
           name: '唐宜豪',
-          person: '山西省 太原市',
-          adress: '太原市杏花岭区小返乡水沟村采薇庄园',
+          person: '陕西省 西安市',
+          adress: '西安市蓝天县小返乡水沟村采薇庄园',
           telephone: '15865442988'
         },
         {
           name: '唐宜豪',
-          person: '山西省 太原市',
-          adress: '太原市杏花岭区小返乡水沟村采薇庄园',
+          person: '陕西省 西安市',
+          adress: '西安市蓝天县小返乡水沟村采薇庄园',
           telephone: '15865442988'
         },
         {
           name: '唐宜豪',
-          person: '山西省 太原市',
-          adress: '太原市杏花岭区小返乡水沟村采薇庄园',
+          person: '陕西省 西安市',
+          adress: '西安市蓝天县小返乡水沟村采薇庄园',
           telephone: '15865442988'
         }
       ],
@@ -97,7 +103,25 @@ export default {
   },
   methods: {
     tableButtonClick(item, row) {
-      console.log(item, row);
+      if (item === '编辑') {
+        this.title = '编辑收货地址';
+        this.form = {
+          provice: '陕西省',
+          city: '西安市',
+          county: '蓝天县',
+          telephone: '15865442988',
+          adress: '西安市蓝天县小返乡水沟村采薇庄园',
+          projectName: '唐宜豪'
+        };
+      } else {
+        this.$confirm('确定删除该条地址吗？', '删除地址', {
+          confirmButtonText: '确认删除',
+          cancelButtonText: '我再想想',
+          type: 'warning'
+        }).then(() => {
+          console.log('删除');
+        });
+      }
     }
   }
 };
@@ -118,8 +142,13 @@ export default {
     }
     .bottom-button {
       margin-left: 126px;
+      .save-button {
+        ::v-deep .main-button {
+          width: 173px;
+        }
+      }
       .checked {
-        margin: 20px 0 40px;
+        margin: 20px 0 30px;
       }
     }
   }

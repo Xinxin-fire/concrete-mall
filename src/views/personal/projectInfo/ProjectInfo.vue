@@ -1,8 +1,11 @@
 <template>
   <div class="project-info">
     <div class="save-data">
-      <div class="title">新增工程信息</div>
+      <div class="title">{{ title }}</div>
       <BaseForm class="form" :form="form" :rules="rules" :form-content="formContent" />
+      <div>
+        <base-button class="save-button" @click="saveData" />
+      </div>
     </div>
     <div class="table-title">工程信息</div>
     <base-table
@@ -22,6 +25,7 @@
 export default {
   data() {
     return {
+      title: '新增工程信息',
       form: {},
       formContent: {
         projectName: { prop: 'projectName', label: '工程名称', type: 'input', span: 12 },
@@ -60,8 +64,26 @@ export default {
     };
   },
   methods: {
+    saveData() {
+      this.$message.success('保存成功');
+    },
     tableButtonClick(item, row) {
-      console.log(item, row);
+      if (item === '编辑') {
+        this.title = '编辑工程信息';
+        this.form = {
+          projectName: '中国铁建大桥工程局集团有限公司',
+          telephone: '何中',
+          person: '15865442988'
+        };
+      } else {
+        this.$confirm('确定删除该工程信息吗？', '删除工程信息', {
+          confirmButtonText: '确认删除',
+          cancelButtonText: '我再想想',
+          type: 'warning'
+        }).then(() => {
+          console.log('删除');
+        });
+      }
     }
   }
 };
@@ -71,8 +93,14 @@ export default {
 .project-info {
   margin-bottom: 80px;
   .save-data {
-    height: 240px;
+    height: 305px;
     background-color: #fff;
+    .save-button {
+      margin-left: 126px;
+      ::v-deep .main-button {
+        width: 173px;
+      }
+    }
     .title {
       margin-left: 30px;
       color: #ED702D;

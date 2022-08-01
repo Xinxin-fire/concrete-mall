@@ -17,6 +17,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/home/HomeView')
       },
       {
+        path: 'goods-list',
+        name: 'goodsList',
+        component: () => import(/* webpackChunkName: "goodsList" */ '@/views/goodsList/GoodsList')
+      },
+      {
         path: 'detail',
         name: 'detail',
         component: () => import(/* webpackChunkName: "detail" */ '@/views/commodityDetail/DetailView')
@@ -25,6 +30,26 @@ const routes = [
         path: 'payment',
         name: 'payment',
         component: () => import(/* webpackChunkName: "payment" */ '@/views/payment/Payment')
+      },
+      {
+        path: 'payment',
+        name: 'payment',
+        component: () => import(/* webpackChunkName: "payment" */ '@/views/payment/Payment')
+      },
+      {
+        path: '/personal/order-manage/evaluate',
+        name: 'evaluate',
+        component: () => import(/* webpackChunkName: "evaluate" */ '@/views/orderManage/evaluate/Evaluate')
+      },
+      {
+        path: '/personal/order-manage/take-delivery',
+        name: 'takeDelivery',
+        component: () => import(/* webpackChunkName: "evaluate" */ '@/views/orderManage/takeDelivery/TakeDelivery')
+      },
+      {
+        path: '/personal/settle-center/enter-payment',
+        name: 'enterPayment',
+        component: () => import(/* webpackChunkName: "evaluate" */ '@/views/settleCenter/enterPayment/EnterPayment')
       },
       {
         path: 'personal',
@@ -51,22 +76,22 @@ const routes = [
               {
                 path: 'contract-detail',
                 name: 'contractDetail',
-                component: () => import(/* webpackChunkName: "contract" */ '@/views/personal/contractDetail/ContractDetail')
+                component: () => import(/* webpackChunkName: "contractDetail" */ '@/views/personal/contractDetail/ContractDetail')
               },
               {
                 path: 'project-info',
                 name: 'projectInfo',
-                component: () => import(/* webpackChunkName: "contract" */ '@/views/personal/projectInfo/ProjectInfo')
+                component: () => import(/* webpackChunkName: "projectInfo" */ '@/views/personal/projectInfo/ProjectInfo')
               },
               {
                 path: 'bill-info',
                 name: 'billInfo',
-                component: () => import(/* webpackChunkName: "contract" */ '@/views/personal/billInfo/BillInfo')
+                component: () => import(/* webpackChunkName: "billInfo" */ '@/views/personal/billInfo/BillInfo')
               },
               {
                 path: 'harvest-address',
                 name: 'harvestAddress',
-                component: () => import(/* webpackChunkName: "contract" */ '@/views/personal/harvestAddress/HarvestAddress')
+                component: () => import(/* webpackChunkName: "harvestAddress" */ '@/views/personal/harvestAddress/HarvestAddress')
               }
             ]
           },
@@ -79,20 +104,45 @@ const routes = [
               {
                 path: 'my-order',
                 name: 'myOrder',
-                component: () => import(/* webpackChunkName: "baseInfo" */ '@/views/orderManage/myOrder/MyOrder')
+                component: () => import(/* webpackChunkName: "myOrder" */ '@/views/orderManage/myOrder/MyOrder')
+              },
+              {
+                path: 'order-detail',
+                name: 'orderDetail',
+                component: () => import(/* webpackChunkName: "orderDetail" */ '@/views/orderManage/orderDetail/OrderDetail')
+              },
+              {
+                path: 'my-transport',
+                name: 'myTransport',
+                component: () => import(/* webpackChunkName: "myTransport" */ '@/views/orderManage/myTransport/MyTransport')
+              },
+              {
+                path: 'transport-detail',
+                name: 'transportDetail',
+                component: () => import(/* webpackChunkName: "transportDetail" */ '@/views/orderManage/transportDetail/TransportDetail')
               }
             ]
           },
           {
             path: '/personal/settle-center',
-            name: 'personalInfo',
+            name: 'settleCenter',
             redirect: '/personal/settle-center/my-statement',
-            component: () => import(/* webpackChunkName: "personalInfo" */ '@/views/personal/LeftMenu'),
+            component: () => import(/* webpackChunkName: "settleCenter" */ '@/views/settleCenter/LeftMenu'),
             children: [
               {
                 path: 'my-statement',
                 name: 'myStatement',
-                component: () => import(/* webpackChunkName: "baseInfo" */ '@/views/settleCenter/myStatement/MyStatement')
+                component: () => import(/* webpackChunkName: "myStatement" */ '@/views/settleCenter/myStatement/MyStatement')
+              },
+              {
+                path: 'statement-detail',
+                name: 'statementDetail',
+                component: () => import(/* webpackChunkName: "statementDetail" */ '@/views/settleCenter/statementDetail/StatementDetail')
+              },
+              {
+                path: 'payment-list',
+                name: 'paymentList',
+                component: () => import(/* webpackChunkName: "paymentList" */ '@/views/settleCenter/paymentList/PaymentList')
               }
             ]
           }

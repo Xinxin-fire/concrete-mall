@@ -55,8 +55,8 @@
       </el-form>
     </div>
     <div class="right">
-      <base-button type="searchButton" name="查询" />
-      <base-button type="resetButton" name="重置" style="margin-left: 20px;" />
+      <base-button type="mainButton" name="查询" />
+      <base-button type="minorButton" name="重置" class="minor-button" />
     </div>
   </div>
 </template>
@@ -99,6 +99,9 @@ export default {
   }
   .right {
     width: 280px;
+    .minor-button {
+      margin-left: 20px;
+    }
   }
 }
 .search-item {

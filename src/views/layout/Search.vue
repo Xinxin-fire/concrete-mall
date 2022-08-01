@@ -1,8 +1,8 @@
 <template>
   <div class="search">
     <div class="title">
-      <SvgIcon icon-class="project-logo" class="project-logo" />
-      <span class="project-name">砼易商城</span>
+      <SvgIcon icon-class="home-logo" class="project-logo" />
+      <!-- <span class="project-name">砼易商城</span> -->
     </div>
     <el-input v-model="productName" placeholder="请输入商品名称、编号、规格等" class="search-input">
       <div slot="prepend">
@@ -14,12 +14,12 @@
       </div>
       <el-button slot="append" icon="el-icon-search" />
     </el-input>
-    <el-button class="user-button" @click="toUser">
+    <!-- <el-button class="user-button" @click="toUser">
       <div class="button-content">
         <SvgIcon class="icon-class" icon-class="user" />
         <span class="word-desc">用户中心</span>
       </div>
-    </el-button>
+    </el-button> -->
   </div>
 </template>
 
@@ -47,15 +47,13 @@ export default {
   padding: 0 160px;
   height: 194px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   .title {
     display: flex;
     align-items: center;
     .project-logo {
-      width: 44px;
+      width: 193px;
       height: 56px;
-      margin-right: 6px;
     }
     .project-name {
       font-size: 32px;
@@ -65,6 +63,7 @@ export default {
   .search-input {
     width: 500px;
     height: 58px;
+    margin-left: 400px;
     .word {
       font-weight: 600;
       font-size: 20px;

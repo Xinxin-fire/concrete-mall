@@ -1,10 +1,24 @@
 <template>
   <div class="base-table">
+    <div v-if="tableHeadObj" class="table-head">
+      <span>
+        <base-button
+          v-for="item in tableHeadObj.buttonList"
+          :key="item"
+          type="cancelButton"
+          style="margin-left: 6px"
+          :name="item"
+          @click="headButtonClick(item)"
+        />
+      </span>
+      <svg-icon v-if="tableHeadObj.openSettings" class="table-setting" icon-class="table-setting" />
+    </div>
     <el-table
       ref="baseTable"
       :data="tableData"
       :header-cell-style="headrCellStyle"
       :cell-style="cellStyle"
+      :cell-class-name="cellClassName"
       :show-header="showHeader"
       :header-cell-class-name="headerCellClassName"
       :max-height="maxHeight"
@@ -31,17 +45,34 @@
         :label="column.label"
         :width="column.width"
         :min-width="column.minWidth"
-      />
-      <el-table-column v-if="operationList.length !== 0" label="操作" width="180">
+        :fixed="column.fixed"
+        :align="column.align"
+      >
+        <template slot-scope="scope">
+          <img v-if="column.type==='img'" class="cell-img" :src="scope.row[column.prop]">
+          <span v-else>{{ scope.row[column.prop] }}</span>
+        </template>
+        <div v-if="column.type==='multiColumn'">
+          <el-table-column
+            v-for="sonColumn in column.children"
+            :key="sonColumn.prop"
+            :prop="sonColumn.prop"
+            :label="sonColumn.label"
+            :width="sonColumn.width"
+            :min-width="sonColumn.minWidth"
+          />
+        </div>
+      </el-table-column>
+      <el-table-column v-if="operationList.length !== 0" fixed="right" label="操作" width="180">
         <template slot-scope="scope">
           <span v-for="item in operationList" :key="item">
-            <el-button
+            <base-button
               v-if="isShowButton(scope.row, item)"
-              type="text"
-              size="small"
+              type="textButton"
               style="margin-left: 6px"
+              :name="item"
               @click="tableButtonClick(item, scope.row)"
-            >{{ item }}</el-button>
+            />
           </span>
         </template>
       </el-table-column>
@@ -84,6 +115,10 @@ export default {
     showHeader: {
       type: Boolean,
       default: true
+    },
+    tableHeadObj: {
+      type: Object,
+      default: () => {}
     },
     tableLoading: {
       type: Boolean,
@@ -164,10 +199,6 @@ export default {
       type: Array,
       default: () => [10, 20, 50, 100]
     },
-    needMearge: {
-      type: Boolean,
-      default: false
-    },
     spanMethod: {
       type: Function,
       default: () => {}
@@ -176,17 +207,23 @@ export default {
       type: Function,
       default: () => {}
     },
-    checkSelectTable: {
-      type: Function,
-      default: () => {}
-    },
-    customOperationObj: {
-      type: Object,
-      default: () => {}
-    },
     headerCellClassName: {
       type: Function,
       default: () => {}
+    },
+    cellClassName: {
+      type: Function,
+      default: () => {}
+    },
+    headrCellStyle: {
+      type: Object,
+      default: () => {
+        return {
+          height: '54px',
+          background: '#F2F3F5',
+          padding: '0 0 0 16px'
+        };
+      }
     },
     needIndex: {
       type: Boolean,
@@ -203,14 +240,9 @@ export default {
   },
   data() {
     return {
-      headrCellStyle: {
-        height: '60px',
-        background: '#F2F3F5',
-        padding: '0 0 0 16px'
-      },
       cellStyle: {
-        height: '60px',
-        padding: '0 0 0 16px'
+        height: '54px',
+        padding: '10px 0 10px 16px'
       }
     };
   },
@@ -230,6 +262,9 @@ export default {
     tableButtonClick(item, row) {
       this.$emit('tableButtonClick', item, row);
     },
+    headButtonClick(item) {
+      this.$emit('headButtonClick', item);
+    },
     handleSizeChange(val) {
       this.$emit('sizeChange', val);
     },
@@ -241,6 +276,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.base-table {
+  width: 1340px;
+  .table-head {
+    height: 68px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: space-between;
+    .table-setting {
+      width: 100px;
+      height: 32px;
+    }
+  }
+  .cell-img {
+    width: 56px;
+    height: 56px;
+  }
+}
 .base-pagination {
   display: flex;
   justify-content: flex-end;
@@ -252,5 +306,8 @@ export default {
 }
 ::v-deep .el-table .el-table__cell.gutter {
   background: #F2F3F5;
+}
+::v-deep .el-table .cell {
+  white-space: pre-line !important;
 }
 </style>

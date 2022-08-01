@@ -5,6 +5,7 @@
       class="contract-table"
       :need-index="true"
       :table-head="tableHead"
+      :cell-class-name="cellClassName"
       :table-data="tableData"
       :operation-list="operationList"
       :total="100"
@@ -104,6 +105,22 @@ export default {
     };
   },
   methods: {
+    cellClassName({ row, column }) {
+      if (column.label === '合同状态') {
+        switch (row.status) {
+          case '已通过':
+            return 'pass-cell';
+          case '供货中':
+            return 'supply-cell';
+          case '完结':
+            return 'end-cell';
+          case '已终止':
+            return 'termination-cell';
+          default:
+            return 'end-cell';
+        }
+      }
+    },
     isShowButton(row, item) {
       if (row.status === '完结' && item === '完结') {
         return false;
@@ -112,9 +129,18 @@ export default {
       }
     },
     tableButtonClick(item, row) {
-      console.log(item, row);
       if (item === '详情') {
         this.$router.push('/personal/personalInfo/contract-detail');
+      } else if (item === '完结') {
+        this.$confirm('完结后，将不能继续使用该合同下单，确定完结吗？', '完结合同', {
+          confirmButtonText: '确认完结',
+          cancelButtonText: '我再想想',
+          type: 'warning'
+        }).then(() => {
+          console.log('完结');
+        });
+      } else {
+        this.$router.push('/personal/order-manage/my-order');
       }
     }
   }
@@ -131,5 +157,45 @@ export default {
   .contract-table {
     margin-bottom: 54px;
   }
+}
+::v-deep .pass-cell .cell {
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  background: #D4E3FC;
+  color: #0052D9;
+  border-radius: 3px;
+}
+::v-deep .end-cell .cell {
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  background: #BCEBDC;
+  color: #00A870;
+  border-radius: 3px;
+}
+::v-deep .supply-cell .cell {
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  background: #F9E0C7;
+  color: #ED7B2F;
+  border-radius: 3px;
+}
+::v-deep .termination-cell .cell {
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  background: #E7E7E7;
+  color: rgba(0, 0, 0, 0.9);
+  border-radius: 3px;
 }
 </style>

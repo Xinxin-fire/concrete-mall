@@ -1,6 +1,6 @@
 <template>
   <div class="contract-detail">
-    <el-page-header class="page-head" content="合同详情" @back="goBack" />
+    <base-back content="合同详情" />
     <img class="detail" src="../assets/contract-detail.png" alt="contract-detail">
     <div style="margin: 32px 0 82px;">
       <el-button class="finish" @click="finish">完结</el-button>
@@ -14,24 +14,12 @@ export default {
   data() {
     return {
     };
-  },
-  methods: {
-    goBack() {
-      this.$router.push('/personal/personalInfo/contract');
-    }
   }
 };
 </script>
 
 <style lang='scss' scoped>
 .contract-detail {
-  .page-head {
-    display: flex;
-    align-items: center;
-    height: 64px;
-    background: #FFFFFF;
-    padding-left: 15px;
-  }
   .detail {
     width: 100%;
     height: 1095px;

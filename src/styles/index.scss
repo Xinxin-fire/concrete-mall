@@ -21,6 +21,7 @@ body {
   height: 100%;
   margin: 0;
   padding:0;
+  overflow-y: overlay;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -48,7 +49,8 @@ label {
     .left {
       width: 260px;;
       height: 615px;
-      background: rgba(51, 51, 51, 0.5);
+      background: rgba(38, 47, 71, 0.9);
+      color: #fff;
       display: flex;
       flex-direction: column;
       .item {
@@ -74,6 +76,9 @@ label {
         line-height: 95px;
         .sub-left {
           width: 180px;
+          font-weight: 600;
+          font-size: 19px;
+          color: #000000;
         }
         .sub-right {
           width: 700px;
@@ -81,7 +86,7 @@ label {
           display: flex;
           padding-left: 30px;
           .sub-content {
-            width: 50px;
+            width: 60px;
           }
         }
       }

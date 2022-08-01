@@ -1,0 +1,51 @@
+.main-button {
+  height: 43px;
+  background: #386BF5;
+  border: none;
+  border-radius: 3px;
+}
+.minor-button {
+  height: 43px;
+  background: #E7E7E7;
+  color: rgba(0, 0, 0, 0.9);
+  border: none;
+  border-radius: 3px;
+}
+.confirm-button {
+  height: 32px;
+  background: #386BF5;
+  border: none;
+  border-radius: 2px;
+}
+.cancel-button {
+  height: 32px;
+  background: #FFFFFF;
+  color: #313233;
+  border: 1px solid #DCDEE0;
+  border-radius: 2px;
+}
+.contrast-button {
+  height: 36px;
+  background: #ED702D;
+  border-radius: 5px;
+  border: none;
+}
+.text-button {
+  color: #0F7DFF
+}
+.minor-text-button {
+  color: #666666;
+  font-size: 16px;
+  padding: 6px 0;
+  &:hover {
+    color: #386BF5;
+  }
+}
+.base-button {
+  display: inline-block;
+}
+::v-deep .el-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

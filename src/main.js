@@ -14,6 +14,9 @@ import '@/styles/index.scss';
 // icon
 import './icons';
 
+// 路由劫持
+import './permission';
+
 Vue.config.productionTip = false;
 new Vue({
   router,
